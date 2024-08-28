@@ -13,9 +13,10 @@ namespace GovTalk\GiftAid;
 
 use XMLWriter;
 use DOMDocument;
-use Guzzle\Http\ClientInterface;
+// use Guzzle\Http\ClientInterface;
 use GovTalk\GovTalk;
 use GovTalk\GiftAid\Individual;
+use GuzzleHttp\ClientInterface;
 use GovTalk\GiftAid\AuthorisedOfficial;
 
 /**
@@ -174,8 +175,9 @@ class GiftAid extends GovTalk
             $endpoint,
             $sender_id,
             $password,
-            $httpClient,
-            $messageLogLocation
+            $httpClient
+            // ,
+            // $messageLogLocation
         );
 
         $this->setMessageAuthentication('clear');
@@ -649,7 +651,7 @@ class GiftAid extends GovTalk
         $package->endElement(); #AuthOfficial
         $package->writeElement('Declaration', 'yes');
 
-        $claimDataXml = $this->buildClaimXml($donor_data, false);
+        $claimDataXml = $this->buildClaimXml($donor_data);
         if ($this->compress == true) {
             $package->startElement('CompressedPart');
             $package->writeAttribute('Type', 'gzip');
