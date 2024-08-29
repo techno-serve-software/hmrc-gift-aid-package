@@ -22,7 +22,7 @@ it to your `composer.json` file:
 ```json
 {
     "require": {
-        "justinbusschau/hmrc-gift-aid": "0.*"
+        "techno-serve-software/hmrc-gift-aid-package": "0.*"
     }
 }
 ```
